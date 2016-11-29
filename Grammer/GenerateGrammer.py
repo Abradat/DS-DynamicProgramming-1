@@ -6,7 +6,7 @@ class Grammer():
         for line in gramFile:
             rLine = line.replace(' ', '').replace('\n', '').split('->')
             self.gramDict[rLine[0]] = rLine[1].split('|')
-            
+
 
     def checkStrToGram(self, string):
         self.matris = []

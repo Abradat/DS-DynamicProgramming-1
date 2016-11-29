@@ -3,7 +3,7 @@ from String import GenerateString
 
 gramAdd = raw_input("Enter the Grammer's address : ")
 strAdd = raw_input("Enter the String's address : ")
-
+outAdd = raw_input("Enter the output's file address : ")
 
 grammer = GenerateGrammer.Grammer(gramAdd)
 strings = GenerateString.String(strAdd)
@@ -14,4 +14,8 @@ for string in strings.strings:
         results.append(string + ": True")
     else:
         results.append(string + ": False")
-print results
+
+outFile = open("Output/" + outAdd, 'w')
+for result in results:
+    outFile.write(result + "\n")
+outFile.close()
