@@ -6,20 +6,20 @@ class Grammer():
         for line in gramFile:
             rLine = line.replace(' ', '').replace('\n', '').split('->')
             self.gramDict[rLine[0]] = rLine[1].split('|')
-            #print self.gramDict
+            
 
     def checkStrToGram(self, string):
         self.matris = []
         strLen = len(string)
         for cnt in range(strLen):
             self.matris.append([])
-        #self.printMatris()
+
 
         for cnt2 in range(strLen):
             for cnt3 in range(cnt2):
                 self.matris[cnt2].append(['-'])
             self.matris[cnt2].append(self.checkGram(string[cnt2]))
-        #self.printMatris()
+
 
         div = 1
         for rowCnt in range(1, strLen):
@@ -28,15 +28,15 @@ class Grammer():
                 res = []
                 for k in range(inRowCnt, inRowCnt + div):
                     merged = self.mergeString(self.matris[inRowCnt][k], self.matris[k + 1][inRowCnt + div])
-                    #print merged
+
                     for mergedCnt in merged:
                         fRes.append(mergedCnt)
-                        #print fRes
+
                 for fResCnt in fRes:
                     aux = self.checkGram(fResCnt)
                     for auxCnt in aux:
-                        #print auxCnt
                         res.append(auxCnt)
+
                 res = set(res)
                 res = list(res)
 
@@ -46,7 +46,7 @@ class Grammer():
                 self.matris[inRowCnt].append(res)
             div += 1
 
-        #self.printMatris()
+
         if('S' in self.matris[0][strLen - 1]):
             return True
         else:
@@ -74,6 +74,4 @@ class Grammer():
             print mat
 
 x = Grammer("test.txt")
-#x.checkStrToGram("baaba")
-#print(x.checkGram("BC"))
-#x.mergeString(['A', 'C'], ['B', 'C', 'A'])
+
