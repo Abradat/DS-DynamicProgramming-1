@@ -72,6 +72,3 @@ class Grammer():
     def printMatris(self):
         for mat in self.matris:
             print mat
-
-x = Grammer("test.txt")
-
